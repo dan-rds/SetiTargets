@@ -21,7 +21,7 @@ make
 echo "-------- Running --------"
 if [ $# == 4 ]; then
 	java -jar ./$1.jar $2 $3 > $4
-	printf "\n\n--------------------  Resut File ---------------------"
+	printf "\n\n--------------------  Resut File ---------------------\n"
 	cat $4
 else
 	java -jar ./$1.jar $2 $3

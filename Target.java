@@ -64,19 +64,14 @@ public class Target
 
 	boolean inView(Position p)
 	{
-		double amin = SetiTargets.DISH_AZ_MIN;
-		double amax = SetiTargets.DISH_AZ_MAX;
-		double emin = SetiTargets.DISH_ELEV_MIN;
-		double emax = SetiTargets.DISH_ELEV_MAX;
-
-		boolean azInView = (amin < p.az && amax > p.az);
-		boolean elInView = (emin < p.el && emax > p.el); 
+		boolean azInView = (SetiTargets.DISH_AZ_MIN < p.az && SetiTargets.DISH_AZ_MAX > p.az);
+		boolean elInView = (SetiTargets.DISH_ELEV_MIN < p.el && SetiTargets.DISH_ELEV_MAX > p.el); 
 	    return (azInView && elInView);
 	} 
 	
 	void printTarget()
 	{
-		System.out.printf("\n%s\t%s\n\tra, dec =  [ %f , %f ]\n", name, (isUpNow)? "is up.": "is not up",  ra, dec);
+		System.out.printf("\n%s     %s\n\tra, dec =  [ %f , %f ]\n", name, (isUpNow)? "is up.": "is NOT up.",  ra, dec);
 		System.out.printf("\taz, el  = ");
 		startPos.printPos();
 		if(everInView)
@@ -92,6 +87,8 @@ public class Target
 				set.printPos();
 			}
 		}
+		else System.out.printf("\tNever in view\n");
+		
 	}
 
 

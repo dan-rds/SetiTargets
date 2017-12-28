@@ -4,5 +4,6 @@
 0.0 Your dish's minimum Azimuth;
 90.0 Your dish's maximum Elevation;
 16.5 Your dish's minimum Elevation;
-8 How many targets you want to calculate
+80 How many targets you want to calculate
+10 Start line of file
 24 How many hours you want to observe (sampled once a minute)
