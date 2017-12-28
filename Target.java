@@ -15,7 +15,7 @@ public class Target
 	public boolean isUpNow;
 
 
-	Target(String NAME, double RA, double DEC, int MAX_MINS)
+	Target(String NAME, double RA, double DEC)
 	{
 		name = NAME;
 		ra = RA;
@@ -35,7 +35,10 @@ public class Target
 		Position curr_pos = calcAzEl(curr_Time, lat, lon);
 		startPos = curr_pos;
 
-		if(inView(curr_pos)) isUpNow = true;
+		if(inView(curr_pos))
+		{	
+			isUpNow = true;
+		}
 
 		for(int i = 0; i < SetiTargets.NUM_MINUTES; i++)
 		{
@@ -61,13 +64,20 @@ public class Target
 
 	boolean inView(Position p)
 	{
-	    return (p != null && (p.az > 0 &&  p.az < 360 ) && (p.el > 16.5 && p.el < 88));
-	}
+		double amin = SetiTargets.DISH_AZ_MIN;
+		double amax = SetiTargets.DISH_AZ_MAX;
+		double emin = SetiTargets.DISH_ELEV_MIN;
+		double emax = SetiTargets.DISH_ELEV_MAX;
+
+		boolean azInView = (amin < p.az && amax > p.az);
+		boolean elInView = (emin < p.el && emax > p.el); 
+	    return (azInView && elInView);
+	} 
 	
 	void printTarget()
 	{
-		System.out.printf("\n%s\t\t %s\n\tra, dec =  [ %f , %f ]\n", name, (isUpNow)? "is up.": "is not up",  ra, dec);
-		System.out.printf("\taz, el = ");
+		System.out.printf("\n%s\t%s\n\tra, dec =  [ %f , %f ]\n", name, (isUpNow)? "is up.": "is not up",  ra, dec);
+		System.out.printf("\taz, el  = ");
 		startPos.printPos();
 		if(everInView)
 		{

@@ -19,8 +19,12 @@ echo "-------- Making --------"
 make 
 
 echo "-------- Running --------"
-java -jar ./$1.jar $2 $3
-
+if [ $# == 4 ]; then
+	java -jar ./$1.jar $2 $3 > $4
+	cat $4
+else
+	java -jar ./$1.jar $2 $3
+fi
 
 
 
