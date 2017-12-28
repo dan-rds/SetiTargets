@@ -1,0 +1,29 @@
+#!/bin/bash
+# Created by Daniel Richards (ddrichar@ucsc.edu)
+# on 11\14\17 
+
+if [ $1 == '-h' ]; then
+    echo "Run with ./testBench [main class name] [test files prefix]"
+	echo "		a) main class name is just that, the main class without the .class suffix."
+	echo "		b) [test files prefix] is either test (for test-input.txt and test-output.txt)"
+	 echo "		   or more (for more-input.txt and more-output.txt)"
+ echo "	For example, for HW4, this command would look like"
+ 	echo "		./testBench SlugFest test"
+ 	exit
+
+fi
+
+echo "------- Cleaning -------"
+make clean 
+echo "-------- Making --------"
+make 
+
+echo "-------- Running --------"
+java -jar ./$1.jar $2 $3
+
+
+
+
+
+
+
