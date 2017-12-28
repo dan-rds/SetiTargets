@@ -1,6 +1,6 @@
-*SETI Targets
-**blah
-***blah
+*SETI*
+**blah**
+***blah ***
 '''
 rone
 vdkjhdbf
