@@ -1,9 +1,8 @@
 40.817 : Observer LAT 
 -121.469 : Observer LON
-4.0 Your dish's field of view
-180.0 Your dish's maximum Azimuth;
-180.0 Your dish's minimum Azimuth;
-180.0 Your dish's maximum Elevation;
-180.0 Your dish's minimum Elevation;
-12 How many hours you want to observe (sampled once a minute)
-
+360.0 Your dish's maximum Azimuth;
+0.0 Your dish's minimum Azimuth;
+90.0 Your dish's maximum Elevation;
+16.5 Your dish's minimum Elevation;
+8 How many targets you want to calculate
+24 How many hours you want to observe (sampled once a minute)
