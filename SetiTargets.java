@@ -48,7 +48,6 @@ public class SetiTargets
                 NUM_HOURS = conf.nextInt();
                 NUM_MINUTES = NUM_HOURS * 60;
                 
-                
                 conf.close();
             }
             catch(IOException e) 
@@ -98,8 +97,8 @@ public class SetiTargets
 
 public static void main(String args[]) 
 {
-    String inputFile = args[0];
-    String configFile = args[1];
+    String inputFile = "targets.txt";
+    String configFile = "config.txt";
 
     configure(configFile);
 

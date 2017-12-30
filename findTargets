@@ -3,28 +3,28 @@
 # on 11\14\17 
 
 if [ $1 == '-h' ]; then
-    echo "Run with ./testBench [main class name] [test files prefix]"
-	echo "		a) main class name is just that, the main class without the .class suffix."
-	echo "		b) [test files prefix] is either test (for test-input.txt and test-output.txt)"
-	 echo "		   or more (for more-input.txt and more-output.txt)"
- echo "	For example, for HW4, this command would look like"
- 	echo "		./testBench SlugFest test"
+   printf "findTargets --help \n   findTargets is a simple script that cleans, makes(a .jar file) and runs SetiTargets\n"
+   printf "   If your targets are in targets.txt and your config.txt is correctly configured, all\n" 
+   printf "   you need to do is run ./findTargets.\n\n"
+   printf "Optionally, you can provide findTargets with an output with ./findTargets <output.txt>\n\n"
+   printf "Created by Daniel Richards github.com/danieldrichards \n\n"
  	exit
 
 fi
+if ! make -q; then
+	echo "------- Cleaning -------"
+	make clean 
+	echo "-------- Making --------"
+	make 
+fi
+	echo "-------- Running --------"
 
-echo "------- Cleaning -------"
-make clean 
-echo "-------- Making --------"
-make 
-
-echo "-------- Running --------"
-if [ $# == 4 ]; then
-	java -jar ./$1.jar $2 $3 > $4
+if [ $# == 1 ]; then
+	java -jar ./SetiTargets.jar > $1
 	printf "\n\n--------------------  Resut File ---------------------\n"
-	cat $4
+	cat $1
 else
-	java -jar ./$1.jar $2 $3
+	java -jar ./SetiTargets.jar
 fi
 
 
